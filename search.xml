@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>每日一题 最长连续序列</title>
+      <link href="/2020/06/06/leetcode-128/"/>
+      <url>/2020/06/06/leetcode-128/</url>
+      
+        <content type="html"><![CDATA[<p>题目描述：给定一个未排序的整数数组，找出最长连续序列的长度。要求算法的时间复杂度为O(n)。</p><a id="more"></a><p>示例：</p><p>输入：[100, 4, 200, 1, 3, 2]</p><p>输出：4</p><p>解释：最长连续序列是[1, 2, 3, 4]。它的长度为4。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">longestConsecutive</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">         <span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; num_set;</span><br><span class="line">         <span class="comment">//遍历整个数组，去重</span></span><br><span class="line">         <span class="keyword">for</span>(<span class="keyword">const</span> <span class="keyword">int</span>&amp; num:nums) &#123;</span><br><span class="line">             num_set.insert(num);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">int</span> longestStreak = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">for</span>(<span class="keyword">const</span> <span class="keyword">int</span>&amp; num : num_set) &#123;</span><br><span class="line">             <span class="keyword">if</span>(!num_set.count(num<span class="number">-1</span>)) &#123;</span><br><span class="line">                 <span class="keyword">int</span> currentNum = num;</span><br><span class="line">                 <span class="keyword">int</span> currentStreak = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">                 <span class="keyword">while</span>(num_set.count(currentNum+<span class="number">1</span>)) &#123;</span><br><span class="line">                     currentNum += <span class="number">1</span>;</span><br><span class="line">                     currentStreak += <span class="number">1</span>;</span><br><span class="line">                 &#125;</span><br><span class="line">                 longestStreak = <span class="built_in">max</span>(longestStreak,currentStreak);</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> longestStreak;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2020/05/05/hello-world/"/>
       <url>/2020/05/05/hello-world/</url>
