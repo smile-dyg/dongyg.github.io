@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>leetcode-126</title>
+      <link href="/2020/06/07/leetcode-126/"/>
+      <url>/2020/06/07/leetcode-126/</url>
+      
+        <content type="html"><![CDATA[<p>题目描述：给定两个单词（beginWord 和 endWord）和一个字典 wordList，找出所有从 beginWord 到 endWord 的最短转换序列。转换需遵循如下规则：</p><p>每次转换只能改变一个字母。<br>转换过程中的中间单词必须是字典中的单词。</p><a id="more"></a><p>说明:</p><p>如果不存在这样的转换序列，返回一个空列表。<br>所有单词具有相同的长度。<br>所有单词只由小写字母组成。<br>字典中不存在重复的单词。<br>你可以假设 beginWord 和 endWord 是非空的，且二者不相同。<br>示例 1:</p><p>输入:<br>beginWord = “hit”,<br>endWord = “cog”,<br>wordList = [“hot”,”dot”,”dog”,”lot”,”log”,”cog”]</p><p>输出:<br>[<br>  [“hit”,”hot”,”dot”,”dog”,”cog”],<br>  [“hit”,”hot”,”lot”,”log”,”cog”]<br>]<br>示例 2:</p><p>输入:<br>beginWord = “hit”<br>endWord = “cog”<br>wordList = [“hot”,”dot”,”dog”,”lot”,”log”]</p><p>输出: []</p><p>解释: endWord “cog” 不在字典中，所以不存在符合要求的转换序列。</p><p>后续待更新</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>每日一题 最长连续序列</title>
       <link href="/2020/06/06/leetcode-128/"/>
       <url>/2020/06/06/leetcode-128/</url>
