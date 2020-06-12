@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>每日一题 三数之和</title>
+      <link href="/2020/06/12/leetcode-15/"/>
+      <url>/2020/06/12/leetcode-15/</url>
+      
+        <content type="html"><![CDATA[<p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。</p><p>注意：答案中不可以包含重复的三元组。</p><a id="more"></a><p>示例：</p><p>给定数组 nums = [-1, 0, 1, 2, -1, -4]，</p><p>满足要求的三元组集合为：<br>[<br>  [-1, 0, 1],<br>  [-1, -1, 2]<br>]</p><p>代码如下：</p><p>class Solution {</p><p>public:</p><p>  vector&lt;vector<int>&gt; threeSum(vector<int>&amp; nums) {</p><p>​    int n = nums.size();</p><p>​    sort(nums.begin(), nums.end());</p><p>​    vector&lt;vector<int>&gt; ans;</p><p>​    // 枚举 a</p><p>​    for (int first = 0; first &lt; n; ++first) {</p><p>​      // 需要和上一次枚举的数不相同</p><p>​      if (first &gt; 0 &amp;&amp; nums[first] == nums[first - 1]) {</p><p>​        continue;</p><p>​      }</p><p>​      // c 对应的指针初始指向数组的最右端</p><p>​      int third = n - 1;</p><p>​      int target = -nums[first];</p><p>​      // 枚举 b</p><p>​      for (int second = first + 1; second &lt; n; ++second) {</p><p>​        // 需要和上一次枚举的数不相同</p><p>​        if (second &gt; first + 1 &amp;&amp; nums[second] == nums[second - 1]) {</p><p>​          continue;</p><p>​        }</p><p>​        // 需要保证 b 的指针在 c 的指针的左侧</p><p>​        while (second &lt; third &amp;&amp; nums[second] + nums[third] &gt; target) {</p><p>​          –third;</p><p>​        }</p><p>​        // 如果指针重合，随着 b 后续的增加</p><p>​        // 就不会有满足 a+b+c=0 并且 b&lt;c 的 c 了，可以退出循环</p><p>​        if (second == third) {</p><p>​          break;</p><p>​        }</p><p>​        if (nums[second] + nums[third] == target) {</p><p>​          ans.push_back({nums[first], nums[second], nums[third]});</p><p>​        }</p><p>​      }</p><p>​    }</p><p>​    return ans;</p><p>  }</p><p>};</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>每日一题 每日温度</title>
       <link href="/2020/06/11/leetcode-739/"/>
       <url>/2020/06/11/leetcode-739/</url>
