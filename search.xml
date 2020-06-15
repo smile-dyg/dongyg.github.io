@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>每日一题 最长公共前缀</title>
+      <link href="/2020/06/15/leetcode-14/"/>
+      <url>/2020/06/15/leetcode-14/</url>
+      
+        <content type="html"><![CDATA[<p>编写一个函数来查找字符串数组中的最长公共前缀。</p><p>如果不存在公共前缀，返回空字符串 “”。</p><a id="more"></a><p>示例 1:</p><p>输入: [“flower”,”flow”,”flight”]<br>输出: “fl”<br>示例 2:</p><p>输入: [“dog”,”racecar”,”car”]<br>输出: “”<br>解释: 输入不存在公共前缀。</p><p>代码如下：</p><p>class Solution {</p><p>public:</p><p>  string longestCommonPrefix(vector<string>&amp; strs) {</p><p>​    if (!strs.size()) {</p><p>​      return “”;</p><p>​    }</p><p>​    string prefix = strs[0];</p><p>​    int count = strs.size();</p><p>​    for (int i = 1; i &lt; count; ++i) {</p><p>​      prefix = longestCommonPrefix(prefix, strs[i]);</p><p>​      if (!prefix.size()) {</p><p>​        break;</p><p>​      }</p><p>​    }</p><p>​    return prefix;</p><p>  }</p><p>  string longestCommonPrefix(const string&amp; str1, const string&amp; str2) {</p><p>​    int length = min(str1.size(), str2.size());</p><p>​    int index = 0;</p><p>​    while (index &lt; length &amp;&amp; str1[index] == str2[index]) {</p><p>​      ++index;</p><p>​    }</p><p>​    return str1.substr(0, index);</p><p>  }</p><p>};</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>每日一题 转变数组后最接近目标值的数组和</title>
       <link href="/2020/06/14/leetcode-1300/"/>
       <url>/2020/06/14/leetcode-1300/</url>
