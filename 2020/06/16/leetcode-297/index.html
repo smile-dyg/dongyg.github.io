@@ -16,13 +16,13 @@
 
   <!-- 页面元数据 -->
   
-    <title>每日一题 最长公共前缀 - 董先生的博客</title>
+    <title>每日一题 二叉树的序列化与反序列化 - 董先生的博客</title>
   
     <meta name="keywords" content="leetcode">
   
   
-    <meta name="description" content="编写一个函数来查找字符串数组中的最长公共前缀。
-如果不存在公共前缀，返回空字符串 “”。">
+    <meta name="description" content="序列化是将一个数据结构或者对象转换为连续的比特位的操作，进而可以将转换后的数据存储在一个文件或者内存中，同时也可以通过网络传输到另一个计算机环境，采取相反方式重构得到原数据。
+请设计一个算法来实现二叉树的序列化与反序列化。这里不限定你的序列 / 反序列化算法执行逻辑，你只需要保证一个二叉树可以被序列化为一个字符串...">
   
 
   <!-- feed -->
@@ -471,8 +471,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/06/15/leetcode-14/">
-      每日一题 最长公共前缀
+    <a href="/2020/06/16/leetcode-297/">
+      每日一题 二叉树的序列化与反序列化
     </a>
   </h1>
 
@@ -502,7 +502,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年6月15日</p>
+    <p>发布于：2020年6月16日</p>
   </a>
 </div>
 
@@ -525,39 +525,71 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
-<p>如果不存在公共前缀，返回空字符串 “”。</p>
+          <p>序列化是将一个数据结构或者对象转换为连续的比特位的操作，进而可以将转换后的数据存储在一个文件或者内存中，同时也可以通过网络传输到另一个计算机环境，采取相反方式重构得到原数据。</p>
+<p>请设计一个算法来实现二叉树的序列化与反序列化。这里不限定你的序列 / 反序列化算法执行逻辑，你只需要保证一个二叉树可以被序列化为一个字符串并且将这个字符串反序列化为原始的树结构。</p>
 <a id="more"></a>
 
-<p>示例 1:</p>
-<p>输入: [“flower”,”flow”,”flight”]<br>输出: “fl”<br>示例 2:</p>
-<p>输入: [“dog”,”racecar”,”car”]<br>输出: “”<br>解释: 输入不存在公共前缀。</p>
+<p>示例: </p>
+<p>你可以将以下二叉树：</p>
+<p>​    1</p>
+<p>   / <br>  2   3<br>     / <br>    4   5</p>
+<p>序列化为 “[1,2,3,null,null,4,5]”</p>
+<p>提示: 这与 LeetCode 目前使用的方式一致，详情请参阅 LeetCode 序列化二叉树的格式。你并非必须采取这种方式，你也可以采用其他的方法解决这个问题。</p>
+<p>说明: 不要使用类的成员 / 全局 / 静态变量来存储状态，你的序列化和反序列化算法应该是无状态的。</p>
 <p>代码如下：</p>
-<p>class Solution {</p>
+<p>/**</p>
+<p> * Definition for a binary tree node.</p>
+<p> * struct TreeNode {</p>
+<p> *   int val;</p>
+<p> *   TreeNode *left;</p>
+<p> *   TreeNode *right;</p>
+<p> *   TreeNode(int x) : val(x), left(NULL), right(NULL) {}</p>
+<p> * };</p>
+<p> */</p>
+<p>class Codec {</p>
 <p>public:</p>
-<p>  string longestCommonPrefix(vector<string>&amp; strs) {</p>
-<p>​    if (!strs.size()) {</p>
-<p>​      return “”;</p>
-<p>​    }</p>
-<p>​    string prefix = strs[0];</p>
-<p>​    int count = strs.size();</p>
-<p>​    for (int i = 1; i &lt; count; ++i) {</p>
-<p>​      prefix = longestCommonPrefix(prefix, strs[i]);</p>
-<p>​      if (!prefix.size()) {</p>
-<p>​        break;</p>
-<p>​      }</p>
-<p>​    }</p>
-<p>​    return prefix;</p>
+<p>  string serialize(TreeNode* root) {</p>
+<p>​    if (!root) return “X”;</p>
+<p>​    auto l = “(“ + serialize(root-&gt;left) + “)”;</p>
+<p>​    auto r = “(“ + serialize(root-&gt;right) + “)”;</p>
+<p>​    return l + to_string(root-&gt;val) + r;</p>
 <p>  }</p>
-<p>  string longestCommonPrefix(const string&amp; str1, const string&amp; str2) {</p>
-<p>​    int length = min(str1.size(), str2.size());</p>
-<p>​    int index = 0;</p>
-<p>​    while (index &lt; length &amp;&amp; str1[index] == str2[index]) {</p>
-<p>​      ++index;</p>
+<p>  inline TreeNode* parseSubtree(const string &amp;data, int &amp;ptr) {</p>
+<p>​    ++ptr; // 跳过左括号</p>
+<p>​    auto subtree = parse(data, ptr);</p>
+<p>​    ++ptr; // 跳过右括号</p>
+<p>​    return subtree;</p>
+<p>  }</p>
+<p>  inline int parseInt(const string &amp;data, int &amp;ptr) {</p>
+<p>​    int x = 0, sgn = 1;</p>
+<p>​    if (!isdigit(data[ptr])) {</p>
+<p>​      sgn = -1;</p>
+<p>​      ++ptr;</p>
 <p>​    }</p>
-<p>​    return str1.substr(0, index);</p>
+<p>​    while (isdigit(data[ptr])) {</p>
+<p>​      x = x * 10 + data[ptr++] - ‘0’;</p>
+<p>​    }</p>
+<p>​    return x * sgn;</p>
+<p>  }</p>
+<p>  TreeNode* parse(const string &amp;data, int &amp;ptr) {</p>
+<p>​    if (data[ptr] == ‘X’) {</p>
+<p>​      ++ptr;</p>
+<p>​      return nullptr;</p>
+<p>​    }</p>
+<p>​    auto cur = new TreeNode(0);</p>
+<p>​    cur-&gt;left = parseSubtree(data, ptr);</p>
+<p>​    cur-&gt;val = parseInt(data, ptr);</p>
+<p>​    cur-&gt;right = parseSubtree(data, ptr);</p>
+<p>​    return cur;</p>
+<p>  }</p>
+<p>  TreeNode* deserialize(string data) {</p>
+<p>​    int ptr = 0;</p>
+<p>​    return parse(data, ptr);</p>
 <p>  }</p>
 <p>};</p>
+<p>// Your Codec object will be instantiated and called as such:</p>
+<p>// Codec codec;</p>
+<p>// codec.deserialize(codec.serialize(root));</p>
 
           
             <div class='article_footer'>
@@ -594,7 +626,7 @@
           
         
           
-            <p>本文永久链接是：<a href=https://smile-dyg.github.io/2020/06/15/leetcode-14/>https://smile-dyg.github.io/2020/06/15/leetcode-14/</a></p>
+            <p>本文永久链接是：<a href=https://smile-dyg.github.io/2020/06/16/leetcode-297/>https://smile-dyg.github.io/2020/06/16/leetcode-297/</a></p>
           
         
       </blockquote>
@@ -645,10 +677,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-15T20:20:52+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-16T22:55:22+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年6月15日</p>
+    <p>更新于：2020年6月16日</p>
   </a>
 </div>
 
@@ -675,8 +707,8 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://smile-dyg.github.io/2020/06/15/leetcode-14/&title=每日一题 最长公共前缀 - 董先生的博客&summary=编写一个函数来查找字符串数组中的最长公共前缀。
-如果不存在公共前缀，返回空字符串 “”。"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://smile-dyg.github.io/2020/06/16/leetcode-297/&title=每日一题 二叉树的序列化与反序列化 - 董先生的博客&summary=序列化是将一个数据结构或者对象转换为连续的比特位的操作，进而可以将转换后的数据存储在一个文件或者内存中，同时也可以通过网络传输到另一个计算机环境，采取相反方式重构得到原数据。
+请设计一个算法来实现二叉树的序列化与反序列化。这里不限定你的序列 / 反序列化算法执行逻辑，你只需要保证一个二叉树可以被序列化为一个字符串并且将这个字符串反序列化为原始的树结构。"
           
           >
           
@@ -688,8 +720,8 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://smile-dyg.github.io/2020/06/15/leetcode-14/&title=每日一题 最长公共前缀 - 董先生的博客&summary=编写一个函数来查找字符串数组中的最长公共前缀。
-如果不存在公共前缀，返回空字符串 “”。"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://smile-dyg.github.io/2020/06/16/leetcode-297/&title=每日一题 二叉树的序列化与反序列化 - 董先生的博客&summary=序列化是将一个数据结构或者对象转换为连续的比特位的操作，进而可以将转换后的数据存储在一个文件或者内存中，同时也可以通过网络传输到另一个计算机环境，采取相反方式重构得到原数据。
+请设计一个算法来实现二叉树的序列化与反序列化。这里不限定你的序列 / 反序列化算法执行逻辑，你只需要保证一个二叉树可以被序列化为一个字符串并且将这个字符串反序列化为原始的树结构。"
           
           >
           
@@ -701,8 +733,8 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://smile-dyg.github.io/2020/06/15/leetcode-14/&title=每日一题 最长公共前缀 - 董先生的博客&summary=编写一个函数来查找字符串数组中的最长公共前缀。
-如果不存在公共前缀，返回空字符串 “”。"
+          href="http://service.weibo.com/share/share.php?url=https://smile-dyg.github.io/2020/06/16/leetcode-297/&title=每日一题 二叉树的序列化与反序列化 - 董先生的博客&summary=序列化是将一个数据结构或者对象转换为连续的比特位的操作，进而可以将转换后的数据存储在一个文件或者内存中，同时也可以通过网络传输到另一个计算机环境，采取相反方式重构得到原数据。
+请设计一个算法来实现二叉树的序列化与反序列化。这里不限定你的序列 / 反序列化算法执行逻辑，你只需要保证一个二叉树可以被序列化为一个字符串并且将这个字符串反序列化为原始的树结构。"
           
           >
           
@@ -726,16 +758,16 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/06/16/leetcode-297/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>每日一题 二叉树的序列化与反序列化</p>
-                <p class='content'>序列化是将一个数据结构或者对象转换为连续的比特位的操作，进而可以将转换后的数据存储在一个文件或者内存中，同时也可以通过网络传输到另一个计算机环境，采取相反方式重构得到原数据。
-请设计一个算法来实...</p>
-              </a>
             
-            
-              <a class='next' href='/2020/06/14/leetcode-1300/'>
-                <p class='title'>每日一题 转变数组后最接近目标值的数组和<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>给你一个整数数组 arr 和一个目标值 target ，请你返回一个整数 value ，使得将数组中所有大于 value 的值变成 value 后，数组的和最接近  target （最接近表示两...</p>
+              <a class='next' href='/2020/06/15/leetcode-14/'>
+                <p class='title'>每日一题 最长公共前缀<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>编写一个函数来查找字符串数组中的最长公共前缀。
+如果不存在公共前缀，返回空字符串 “”。
+
+
+示例 1:
+输入: [“flower”,”flow”,”flight”]输出: “fl”示例 2:
+...</p>
               </a>
             
           </div>
@@ -780,7 +812,7 @@
 
   <script>
     window.subData = {
-      title: '每日一题 最长公共前缀',
+      title: '每日一题 二叉树的序列化与反序列化',
       tools: true
     }
   </script>
