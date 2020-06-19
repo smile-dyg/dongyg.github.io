@@ -16,14 +16,13 @@
 
   <!-- 页面元数据 -->
   
-    <title>每日一题 最佳观光组合 - 董先生的博客</title>
+    <title>每日一题 验证回文串 - 董先生的博客</title>
   
     <meta name="keywords" content="leetcode">
   
   
-    <meta name="description" content="给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。
-一对景点（i &lt; j）组成的观光组合的得分为（A[i] + A[j] + i - j）：景点的评分之和减去它们两者之间的距离。
-返回一对观光景点能取得的最高分。">
+    <meta name="description" content="给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+说明：本题中，我们将空字符串定义为有效的回文串。">
   
 
   <!-- feed -->
@@ -472,8 +471,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/06/17/leetcode-1014/">
-      每日一题 最佳观光组合
+    <a href="/2020/06/19/leetcode-125/">
+      每日一题 验证回文串
     </a>
   </h1>
 
@@ -503,7 +502,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年6月17日</p>
+    <p>发布于：2020年6月19日</p>
   </a>
 </div>
 
@@ -526,26 +525,25 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。</p>
-<p>一对景点（i &lt; j）组成的观光组合的得分为（A[i] + A[j] + i - j）：景点的评分之和减去它们两者之间的距离。</p>
-<p>返回一对观光景点能取得的最高分。</p>
- <a id="more"></a>
+          <p>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。</p>
+<p>说明：本题中，我们将空字符串定义为有效的回文串。</p>
+<a id="more"></a>
 
-<p>示例：</p>
-<p>输入：[8,1,5,2,6]<br>输出：11<br>解释：i = 0, j = 2, A[i] + A[j] + i - j = 8 + 5 + 0 - 2 = 11</p>
-<p>提示：</p>
-<p>2 &lt;= A.length &lt;= 50000<br>1 &lt;= A[i] &lt;= 1000</p>
+<p>示例 1:</p>
+<p>输入: “A man, a plan, a canal: Panama”<br>输出: true<br>示例 2:</p>
+<p>输入: “race a car”<br>输出: false</p>
 <p>代码如下：</p>
 <p>class Solution {</p>
 <p>public:</p>
-<p>  int maxScoreSightseeingPair(vector<int>&amp; A) {</p>
-<p>​    int ans = 0, mx = A[0] + 0;</p>
-<p>​    for (int j = 1; j &lt; A.size(); ++j) {</p>
-<p>​      ans = max(ans, mx + A[j] - j);</p>
-<p>​      // 边遍历边维护</p>
-<p>​      mx = max(mx, A[j] + j);</p>
+<p>  bool isPalindrome(string s) {</p>
+<p>​    string sgood;</p>
+<p>​    for (char ch: s) {</p>
+<p>​      if (isalnum(ch)) {</p>
+<p>​        sgood += tolower(ch);</p>
+<p>​      }</p>
 <p>​    }</p>
-<p>​    return ans;</p>
+<p>​    string sgood_rev(sgood.rbegin(), sgood.rend());</p>
+<p>​    return sgood == sgood_rev;</p>
 <p>  }</p>
 <p>};</p>
 
@@ -584,7 +582,7 @@
           
         
           
-            <p>本文永久链接是：<a href=https://smile-dyg.github.io/2020/06/17/leetcode-1014/>https://smile-dyg.github.io/2020/06/17/leetcode-1014/</a></p>
+            <p>本文永久链接是：<a href=https://smile-dyg.github.io/2020/06/19/leetcode-125/>https://smile-dyg.github.io/2020/06/19/leetcode-125/</a></p>
           
         
       </blockquote>
@@ -635,10 +633,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-17T23:41:14+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-19T23:47:50+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年6月17日</p>
+    <p>更新于：2020年6月19日</p>
   </a>
 </div>
 
@@ -665,9 +663,8 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://smile-dyg.github.io/2020/06/17/leetcode-1014/&title=每日一题 最佳观光组合 - 董先生的博客&summary=给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。
-一对景点（i &lt; j）组成的观光组合的得分为（A[i] + A[j] + i - j）：景点的评分之和减去它们两者之间的距离。
-返回一对观光景点能取得的最高分。"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://smile-dyg.github.io/2020/06/19/leetcode-125/&title=每日一题 验证回文串 - 董先生的博客&summary=给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+说明：本题中，我们将空字符串定义为有效的回文串。"
           
           >
           
@@ -679,9 +676,8 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://smile-dyg.github.io/2020/06/17/leetcode-1014/&title=每日一题 最佳观光组合 - 董先生的博客&summary=给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。
-一对景点（i &lt; j）组成的观光组合的得分为（A[i] + A[j] + i - j）：景点的评分之和减去它们两者之间的距离。
-返回一对观光景点能取得的最高分。"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://smile-dyg.github.io/2020/06/19/leetcode-125/&title=每日一题 验证回文串 - 董先生的博客&summary=给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+说明：本题中，我们将空字符串定义为有效的回文串。"
           
           >
           
@@ -693,9 +689,8 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://smile-dyg.github.io/2020/06/17/leetcode-1014/&title=每日一题 最佳观光组合 - 董先生的博客&summary=给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。
-一对景点（i &lt; j）组成的观光组合的得分为（A[i] + A[j] + i - j）：景点的评分之和减去它们两者之间的距离。
-返回一对观光景点能取得的最高分。"
+          href="http://service.weibo.com/share/share.php?url=https://smile-dyg.github.io/2020/06/19/leetcode-125/&title=每日一题 验证回文串 - 董先生的博客&summary=给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+说明：本题中，我们将空字符串定义为有效的回文串。"
           
           >
           
@@ -719,21 +714,11 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/06/19/leetcode-125/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>每日一题 验证回文串</p>
-                <p class='content'>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
-说明：本题中，我们将空字符串定义为有效的回文串。
-
-
-示例 1:
-输入: “A man, a plan, a c...</p>
-              </a>
             
-            
-              <a class='next' href='/2020/06/16/leetcode-297/'>
-                <p class='title'>每日一题 二叉树的序列化与反序列化<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>序列化是将一个数据结构或者对象转换为连续的比特位的操作，进而可以将转换后的数据存储在一个文件或者内存中，同时也可以通过网络传输到另一个计算机环境，采取相反方式重构得到原数据。
-请设计一个算法来实...</p>
+              <a class='next' href='/2020/06/17/leetcode-1014/'>
+                <p class='title'>每日一题 最佳观光组合<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。
+一对景点（i &lt; j）组成的观光组合的得分为（A[i] + A[j] + ...</p>
               </a>
             
           </div>
@@ -778,7 +763,7 @@
 
   <script>
     window.subData = {
-      title: '每日一题 最佳观光组合',
+      title: '每日一题 验证回文串',
       tools: true
     }
   </script>
