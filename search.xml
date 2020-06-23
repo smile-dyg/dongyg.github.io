@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>每日一题 二进制求和</title>
+      <link href="/2020/06/23/leetcode-67/"/>
+      <url>/2020/06/23/leetcode-67/</url>
+      
+        <content type="html"><![CDATA[<p>给你两个二进制字符串，返回它们的和（用二进制表示）。</p><p>输入为 非空 字符串且只包含数字 1 和 0。</p> <a id="more"></a><p>示例 1:</p><p>输入: a = “11”, b = “1”<br>输出: “100”<br>示例 2:</p><p>输入: a = “1010”, b = “1011”<br>输出: “10101”</p><p>代码如下：</p><p>class Solution {</p><p>public:</p><p>  string addBinary(string a, string b) {</p><p>​    string ans;</p><p>​    reverse(a.begin(), a.end());</p><p>​    reverse(b.begin(), b.end());</p><p>​    int n = max(a.size(), b.size()), carry = 0;</p><p>​    for (size_t i = 0; i &lt; n; ++i) {</p><p>​      carry += i &lt; a.size() ? (a.at(i) == ‘1’) : 0;</p><p>​      carry += i &lt; b.size() ? (b.at(i) == ‘1’) : 0;</p><p>​      ans.push_back((carry % 2) ? ‘1’ : ‘0’);</p><p>​      carry /= 2;</p><p>​    }</p><p>​    if (carry) {</p><p>​      ans.push_back(‘1’);</p><p>​    }</p><p>​    reverse(ans.begin(), ans.end());</p><p>​    return ans;</p><p>  }</p><p>};</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>每日一题 验证回文串</title>
       <link href="/2020/06/19/leetcode-125/"/>
       <url>/2020/06/19/leetcode-125/</url>

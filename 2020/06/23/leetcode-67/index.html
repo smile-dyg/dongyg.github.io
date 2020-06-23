@@ -16,13 +16,13 @@
 
   <!-- 页面元数据 -->
   
-    <title>每日一题 验证回文串 - 董先生的博客</title>
+    <title>每日一题 二进制求和 - 董先生的博客</title>
   
     <meta name="keywords" content="leetcode">
   
   
-    <meta name="description" content="给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
-说明：本题中，我们将空字符串定义为有效的回文串。">
+    <meta name="description" content="给你两个二进制字符串，返回它们的和（用二进制表示）。
+输入为 非空 字符串且只包含数字 1 和 0。">
   
 
   <!-- feed -->
@@ -471,8 +471,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/06/19/leetcode-125/">
-      每日一题 验证回文串
+    <a href="/2020/06/23/leetcode-67/">
+      每日一题 二进制求和
     </a>
   </h1>
 
@@ -502,7 +502,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年6月19日</p>
+    <p>发布于：2020年6月23日</p>
   </a>
 </div>
 
@@ -525,25 +525,32 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。</p>
-<p>说明：本题中，我们将空字符串定义为有效的回文串。</p>
-<a id="more"></a>
+          <p>给你两个二进制字符串，返回它们的和（用二进制表示）。</p>
+<p>输入为 非空 字符串且只包含数字 1 和 0。</p>
+ <a id="more"></a>
 
 <p>示例 1:</p>
-<p>输入: “A man, a plan, a canal: Panama”<br>输出: true<br>示例 2:</p>
-<p>输入: “race a car”<br>输出: false</p>
+<p>输入: a = “11”, b = “1”<br>输出: “100”<br>示例 2:</p>
+<p>输入: a = “1010”, b = “1011”<br>输出: “10101”</p>
 <p>代码如下：</p>
 <p>class Solution {</p>
 <p>public:</p>
-<p>  bool isPalindrome(string s) {</p>
-<p>​    string sgood;</p>
-<p>​    for (char ch: s) {</p>
-<p>​      if (isalnum(ch)) {</p>
-<p>​        sgood += tolower(ch);</p>
-<p>​      }</p>
+<p>  string addBinary(string a, string b) {</p>
+<p>​    string ans;</p>
+<p>​    reverse(a.begin(), a.end());</p>
+<p>​    reverse(b.begin(), b.end());</p>
+<p>​    int n = max(a.size(), b.size()), carry = 0;</p>
+<p>​    for (size_t i = 0; i &lt; n; ++i) {</p>
+<p>​      carry += i &lt; a.size() ? (a.at(i) == ‘1’) : 0;</p>
+<p>​      carry += i &lt; b.size() ? (b.at(i) == ‘1’) : 0;</p>
+<p>​      ans.push_back((carry % 2) ? ‘1’ : ‘0’);</p>
+<p>​      carry /= 2;</p>
 <p>​    }</p>
-<p>​    string sgood_rev(sgood.rbegin(), sgood.rend());</p>
-<p>​    return sgood == sgood_rev;</p>
+<p>​    if (carry) {</p>
+<p>​      ans.push_back(‘1’);</p>
+<p>​    }</p>
+<p>​    reverse(ans.begin(), ans.end());</p>
+<p>​    return ans;</p>
 <p>  }</p>
 <p>};</p>
 
@@ -582,7 +589,7 @@
           
         
           
-            <p>本文永久链接是：<a href=https://smile-dyg.github.io/2020/06/19/leetcode-125/>https://smile-dyg.github.io/2020/06/19/leetcode-125/</a></p>
+            <p>本文永久链接是：<a href=https://smile-dyg.github.io/2020/06/23/leetcode-67/>https://smile-dyg.github.io/2020/06/23/leetcode-67/</a></p>
           
         
       </blockquote>
@@ -633,10 +640,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-19T23:47:50+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-23T23:07:41+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年6月19日</p>
+    <p>更新于：2020年6月23日</p>
   </a>
 </div>
 
@@ -663,8 +670,8 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://smile-dyg.github.io/2020/06/19/leetcode-125/&title=每日一题 验证回文串 - 董先生的博客&summary=给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
-说明：本题中，我们将空字符串定义为有效的回文串。"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://smile-dyg.github.io/2020/06/23/leetcode-67/&title=每日一题 二进制求和 - 董先生的博客&summary=给你两个二进制字符串，返回它们的和（用二进制表示）。
+输入为 非空 字符串且只包含数字 1 和 0。"
           
           >
           
@@ -676,8 +683,8 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://smile-dyg.github.io/2020/06/19/leetcode-125/&title=每日一题 验证回文串 - 董先生的博客&summary=给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
-说明：本题中，我们将空字符串定义为有效的回文串。"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://smile-dyg.github.io/2020/06/23/leetcode-67/&title=每日一题 二进制求和 - 董先生的博客&summary=给你两个二进制字符串，返回它们的和（用二进制表示）。
+输入为 非空 字符串且只包含数字 1 和 0。"
           
           >
           
@@ -689,8 +696,8 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://smile-dyg.github.io/2020/06/19/leetcode-125/&title=每日一题 验证回文串 - 董先生的博客&summary=给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
-说明：本题中，我们将空字符串定义为有效的回文串。"
+          href="http://service.weibo.com/share/share.php?url=https://smile-dyg.github.io/2020/06/23/leetcode-67/&title=每日一题 二进制求和 - 董先生的博客&summary=给你两个二进制字符串，返回它们的和（用二进制表示）。
+输入为 非空 字符串且只包含数字 1 和 0。"
           
           >
           
@@ -714,22 +721,15 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/06/23/leetcode-67/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>每日一题 二进制求和</p>
-                <p class='content'>给你两个二进制字符串，返回它们的和（用二进制表示）。
-输入为 非空 字符串且只包含数字 1 和 0。
- 
+            
+              <a class='next' href='/2020/06/19/leetcode-125/'>
+                <p class='title'>每日一题 验证回文串<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+说明：本题中，我们将空字符串定义为有效的回文串。
+
 
 示例 1:
-输入: a = “11”, b = “1”输出: “100”示例 2:
-输...</p>
-              </a>
-            
-            
-              <a class='next' href='/2020/06/17/leetcode-1014/'>
-                <p class='title'>每日一题 最佳观光组合<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>给定正整数数组 A，A[i] 表示第 i 个观光景点的评分，并且两个景点 i 和 j 之间的距离为 j - i。
-一对景点（i &lt; j）组成的观光组合的得分为（A[i] + A[j] + ...</p>
+输入: “A man, a plan, a c...</p>
               </a>
             
           </div>
@@ -774,7 +774,7 @@
 
   <script>
     window.subData = {
-      title: '每日一题 验证回文串',
+      title: '每日一题 二进制求和',
       tools: true
     }
   </script>
